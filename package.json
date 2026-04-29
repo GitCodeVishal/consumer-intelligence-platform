@@ -1,0 +1,41 @@
+{
+  "name": "consumer-intelligence-platform",
+  "version": "1.0.0",
+  "description": "A scalable backend system for a multi-brand D2C (Direct-to-Consumer) platform that enables **unified consumer identity**, **behavioral event tracking**, **rule-based segmentation**, and **spending propensity scoring**.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate": "sequelize-cli db:migrate",
+    "migrate:undo": "sequelize-cli db:migrate:undo",
+    "migrate:undo:all": "sequelize-cli db:migrate:undo:all",
+    "seed": "sequelize-cli db:seed:all",
+    "seed:undo": "sequelize-cli db:seed:undo:all",
+    "db:reset": "npm run migrate:undo:all && npm run migrate && npm run seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitCodeVishal/consumer-intelligence-platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitCodeVishal/consumer-intelligence-platform/issues"
+  },
+  "homepage": "https://github.com/GitCodeVishal/consumer-intelligence-platform#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "http-status-codes": "^2.3.0",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.22.3",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5"
+  }
+}

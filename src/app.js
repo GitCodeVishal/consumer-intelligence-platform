@@ -1,0 +1,26 @@
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const { StatusCodes } = require('http-status-codes');
+
+const { successResponse } = require('./utils/responses');
+const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
+
+const app = express();
+
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+app.use(morgan('dev'));
+
+app.get('/health', (req, res) => {
+  res
+    .status(StatusCodes.OK)
+    .json(successResponse({ status: 'ok' }, 'Service is healthy'));
+});
+
+app.use(notFoundHandler);
+app.use(errorHandler);
+
+module.exports = app;
