@@ -6,6 +6,9 @@ const { StatusCodes } = require('http-status-codes');
 
 const { successResponse } = require('./utils/responses');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
+const userRoutes = require('./routes/userRoutes');
+const eventRoutes = require('./routes/eventRoutes');
+const segmentRoutes = require('./routes/segmentRoutes');
 
 const app = express();
 
@@ -19,6 +22,10 @@ app.get('/health', (req, res) => {
     .status(StatusCodes.OK)
     .json(successResponse({ status: 'ok' }, 'Service is healthy'));
 });
+
+app.use('/api/users', userRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/segments', segmentRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
